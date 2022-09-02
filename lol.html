@@ -1,22 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brus</title>
+    <title>Guess</title>
 </head>
 <body>
+<body style="background-color:rgb(87, 157, 223);"></body>
+
+
+<div class="guess_box">
+<h1>Gjett tall fra 0-100</h1>
+<input type="number" id="guess_input">
+<button id="knapp">Guess</button>
+
+</div>
 
 <script>
 
-let value1 = Math.floor(Math.random() * 101);
+let riktigTall = Math.floor(Math.random() * 101);
 
-var riktigTall = value1
+var knapp = document.querySelector("#knapp")
+var gjettet = document.querySelector("#guess_input")
 
-var gjettet = prompt("Guess the number from 0-100")
+function sjekkTall(){
+    console.log(gjettet.value)
+}
 
-console.log(value1);
-console.log(gjettet ==riktigTall);
+knapp.addEventListener("click", sjekkTall)
+
+if (gjettet === riktigTall) {
+    console.log(`Riktig! Bra jobbet! Tallet var ${riktigTall}`);
+}
+
+else if (gjettet.value < riktigTall) {
+    alert(`Tallet var for lavt, Tallet var ${riktigTall}!`);
+    //location.reload();
+}
+
+else {
+    alert(`Tallet var for høyt, Tallet var ${riktigTall}!`)
+    //location.reload();
+}
+
+
+
+
+
+console.log(riktigTall)
 </script>
 
 
