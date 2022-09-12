@@ -1,4 +1,5 @@
 <head>
+    <link rel="stylesheet" href="lol.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess</title>
@@ -9,43 +10,74 @@
 
 <div class="guess_box">
 <h1>Gjett tall fra 0-100</h1>
+<p id="test"></p>
 <input type="number" id="guess_input">
-<button id="knapp">Guess</button>
-
+<button id="knapp"> Guess</button>
+<h2 id="h2tag"></h2>
+<button id="restart">Restart</button>
 </div>
 
 <script>
 
+var knapp_EL = document.querySelector("#knappID");
+var input_EL = document.querySelector("#inputID");
+var feedback_EL = document.querySelector("#feedback");
+var restart_EL = document.querySelector("#restart")
+
 let riktigTall = Math.floor(Math.random() * 101);
+var attempts = 5;
+var score = 0;
+var playing = true;
 
-var knapp = document.querySelector("#knapp")
-var gjettet = document.querySelector("#guess_input")
+function restart(){
+    attempts = 5;
+    score = 0;
+    playing = true
+}
 
-function sjekkTall(){
+function check_attempts(){
+    if (attempts <= 0) {
+        feedback_EL.innerHTML = "You have no more attempts left. Restart.";
+        playing = false
+
+    }
+}
+
+var knapp = document.querySelector("#knapp");
+var gjettet = document.querySelector("#guess_input");
+var test = document.getElementById("test");
+
+knapp.addEventListener("click", clicked);
+
+function clicked() {
+    if (playing == true){
+    console.log(gjettet.value);
+    guessed_num = gjettet.value;
+    attempts--;
+
     console.log(gjettet.value)
-}
+    if (gjettet.value == riktigTall) {
+        feedback_EL("h2tag").innerHTML = `Du gjettet ${gjettet.value}, Tallet var for korrekt! Gratulerer:)`
+        score++;
+        playing = false;
+    }
 
-knapp.addEventListener("click", sjekkTall)
+    else if (gjettet.value < riktigTall) {
+        feedback_EL.innerHTML  = `Du gjettet ${gjettet.value}, Tallet var for lavt`;
+        check_attempts()
+    }
 
-if (gjettet === riktigTall) {
-    console.log(`Riktig! Bra jobbet! Tallet var ${riktigTall}`);
-}
-
-else if (gjettet.value < riktigTall) {
-    alert(`Tallet var for lavt, Tallet var ${riktigTall}!`);
-    //location.reload();
-}
-
-else {
-    alert(`Tallet var for høyt, Tallet var ${riktigTall}!`)
-    //location.reload();
-}
-
+    else if (gjettet.value > riktigTall){
+        feedback_EL.innerHTML  = `Du gjettet ${gjettet.value}, Tallet var for høyt`;
+        check_attempts()
+    }
+    
+    } // end if playing
+} // end clicked function
+knapp_EL.addEventListener("click", clicked);
+restart_EL.addEventListener("click", restart);
 
 
-
-
-console.log(riktigTall)
 </script>
 
 
