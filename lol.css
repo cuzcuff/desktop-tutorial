@@ -1,0 +1,38 @@
+.guess_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: deepskyblue;
+    top: 50%;
+    margin-left: 37.5%;
+    padding: 10px;
+    width: 500px;
+}
+
+#inputID {
+    height: 15px;
+}
+
+#knappID {
+    height: 30px;
+    width: 60px;
+    color: deepskyblue;
+    
+}
+
+#restart {
+    height: 30px;
+    width: 60px;
+    color: deepskyblue;
+}
+
+
+#feedback {
+    font-family: "Times New Roman", Times, serif;
+    color: darkorchid;
+}
+
+#score {
+    font-family: "Times New Roman", Times, serif;
+    color: darkorchid;
+}
