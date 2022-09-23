@@ -1,9 +1,10 @@
 .guess_box {
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: deepskyblue;
-    top: 50%;
+    top: 20%;
     margin-left: 37.5%;
     padding: 10px;
     width: 500px;
@@ -23,7 +24,7 @@
 #restart {
     height: 30px;
     width: 60px;
-    color: deepskyblue;
+    color: #00bfff;
 }
 
 
@@ -36,3 +37,12 @@
     font-family: "Times New Roman", Times, serif;
     color: darkorchid;
 }
+
+.particle {
+    position: fixed;
+}
+
+
+
+
+

@@ -14,6 +14,7 @@ var max_time = 30
 var time_left = max_time;
 
 
+
 function restart(){
     attempts = 10;
     score = 0;
@@ -48,7 +49,11 @@ function sjekkTall(){
             feedback_EL.innerHTML = "Congratulations you win";
             score++;
             score_EL.innerHTML = "Score: " + score;
+            startConfetti();
             playing = false;
+            stopConfetti();
+            //hjelp hær
+
 
         } else if (guessed_num < random_num ){
             feedback_EL.innerHTML = guessed_num + " Was too low, try guessing a higher number";
